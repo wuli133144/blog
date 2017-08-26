@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <title>现代医学</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link rel="stylesheet"  href="../../static/css/bootstrap.min.css">
+<style>
+
+ body {
+	padding-top: 50px;
+    padding-left: 50px;
+    font-family: 微软雅黑；
+
+}
+
+
+</style>
+<!--[if lt IE 9]>
+	<script src="https://apps.bdimg.com/libs/html5shiv/3.7/html5shiv.min.js"></script>
+<![endif]-->
+</head>
+<body>
+	
+<div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#">Project name</a>
+		</div>
+		<div class="collapse navbar-collapse">
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="#"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+				<li><a href="#shop"><span class="glyphicon glyphicon-shopping-cart"></span> Shop</a></li>
+				<li><a href="#support"><span class="glyphicon glyphicon-headphones"></span> Support</a></li>
+			</ul>
+		</div><!-- /.nav-collapse -->
+	</div><!-- /.container -->
+</div>
+<!-- jQuery (Bootstrap 插件需要引入) -->
+
+
+<div class="row container">
+    <h1 class="page-header">fdassssss</h1>
+  <div class="col-md-8">
+   <table  id="table_id" class="table table-default table-striped table-hover">
+	    <tr>
+			<th>姓名</th>
+		    <th>年龄</th>
+			<th>班级</th>
+        </tr>
+         {%for person in list%}
+         <tr>
+             <td>{{person.name}}</td>
+             <td>{{person.email}}</td>
+         </tr>
+         {% endfor %}
+        
+   </table>
+  </div>
+  <div class="col-md-4" >
+      <form class="form-inline" action="/index/g" method="get">
+             
+         <div class="form-group pull-right">
+             <label for="name">姓名:</label>
+             <input type="text"  id="name" name='name' class="form-control">
+         </div>
+         <div class="form-group pull-right">
+             <label for="pass">邮箱:</label>
+             <input type="email" id='pass' name='email' class="form-control">
+         </div>
+
+         <div class="form-control pull-right">
+              <input type="submit" class="btn btn-default"  value="注册">
+              <input type="submit"  class="btn btn-default" value="取消">
+              
+
+         </div>
+         <button class="btn btn-danger" id="ajx"></button>
+      </form>
+
+  </div>
+
+</div>
+<script>
+    //ajax追加数据
+       $('#ajx').click(function(){
+           $.getJSON('/index/getjson',function(ret){
+             alert(ret)
+           })
+              /*$.post('/index/g',{'name':name,'email':email},
+               function(ret){
+                       $('#table_id tr').get(1).appendChild('<td>'+ret.name+'</td></br>'+'<td>'+ret.email+'</td>')
+               }
+              )
+              $.ajax (
+                  {url:"/index/g",
+                      data:{'name':name,'email':email},
+                      dataType:"text",
+                      success:function(data){
+                               //添加子元素的操作         
+                     }
+                  }
+              )
+              */
+
+       })
+       
+
+</script>
+
+
+<script src="../../static/js/jquery.min.js"></script>
+<!-- 包含了所有编译插件 -->
+<script src="../../static/js/bootstrap.min.js"></script>
+	
+</body>
+</html>
